@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApiBooks.Models
 {
+    [Table("book")]
     public class Book
     {
         [Key]
