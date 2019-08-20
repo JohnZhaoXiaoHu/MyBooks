@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using WebApiBooks.Models;
+using WebApiBooks.RepopsitoryContracts;
 using WebApiBooks.Repositories;
 
 namespace WebApiBooks
@@ -28,6 +30,7 @@ namespace WebApiBooks
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:BookDB"]));
+            services.AddScoped<IBookRepository<Book>, DataBookRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
