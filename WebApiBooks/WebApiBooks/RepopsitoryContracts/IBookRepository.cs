@@ -6,8 +6,8 @@ using WebApiBooks.Models;
 
 namespace WebApiBooks.RepopsitoryContracts
 {
-   public interface IRepository
-    {
+   public interface IBookRepository
+    { 
         IEnumerable<Book> Books { get; }
         Book this[int id] { get; }
         Book AddBook(Book book);
