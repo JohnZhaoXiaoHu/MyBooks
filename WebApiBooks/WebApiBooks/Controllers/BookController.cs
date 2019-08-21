@@ -47,14 +47,14 @@ namespace WebApiBooks.Controllers
             _bookRepository.Add(book);
             return Ok();
         }
-        [HttpPut("{Id}")]
-        public IActionResult Put(Guid id, [FromBody] Book book)
+        [HttpPut]
+        public IActionResult Put(  [FromBody] Book book)
         {
             if(book==null)
             {
                 return BadRequest("Book is null.");
             }
-            Book bookToUpdate = _bookRepository.Get(id);
+            Book bookToUpdate = _bookRepository.Get(book.Id);
             if(bookToUpdate == null)
             {
                 return NotFound("The book record couldn't be found.");
@@ -63,7 +63,7 @@ namespace WebApiBooks.Controllers
             _bookRepository.Update(bookToUpdate, book);
             return Ok();
         }
-
+        [HttpDelete]
         public IActionResult Delete(Guid id)
         {
             Book book = _bookRepository.Get(id);
