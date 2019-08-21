@@ -15,21 +15,20 @@ namespace WebApiBooks.Repositories
             _repositoryContext = context;
         }
 
-        public void Add(Book entity)
+        public void Add(Book updatebook)
         {
-            _repositoryContext.Books.Add(entity);
-            _repositoryContext.Books.Update(entity);
+            _repositoryContext.Books.Add(updatebook);
+           
         } 
 
-        public void Delete(Book book)
+        public void Delete(Book updatebook)
         {
-            _repositoryContext.Books.Remove(book);
-            _repositoryContext.Books.Update(book);
+            _repositoryContext.Books.Remove(updatebook);          
         }
 
-        public Book Get(int id)
+        public Book Get(Guid id)
         {
-            return _repositoryContext.Books.FirstOrDefault(e => e.BookId == id);
+            return _repositoryContext.Books.FirstOrDefault();
         }
 
         public IEnumerable<Book> GetAll()
@@ -37,14 +36,13 @@ namespace WebApiBooks.Repositories
             return _repositoryContext.Books.ToList();
         }
 
-        public void Update(Book book, Book entity)
-        {
-            book.BookId = entity.BookId;
-            book.Author = entity.Author;
-            book.nameBook = entity.nameBook;
-            book.Page = entity.Page;
+        public void Update(Book book, Book updateBook)
+        {          
+            book.Author = updateBook.Author;
+            book.NameBook = updateBook.NameBook;
+            book.Page =  updateBook.Page;
 
-            _repositoryContext.Books.Update(entity);
+            _repositoryContext.Books.Update(updateBook);
         }
     }
 }

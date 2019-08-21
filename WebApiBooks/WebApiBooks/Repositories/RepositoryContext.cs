@@ -20,17 +20,17 @@ namespace WebApiBooks.Repositories
         {
             modelBuilder.Entity<Book>().HasData(new Book
             {
-                BookId = 1,
-                nameBook = "C# 7 .Net Core",
+                Id = Guid.NewGuid(),
+                NameBook = "C# 7 .Net Core",
                 Author = "Andrew Troelsen",
                 Page = 1328
             }, new Book
             {
-                BookId = 2,
-                nameBook = "SQL",
+                Id = Guid.NewGuid(),
+                NameBook = "SQL",
                 Author = "Allen G.Taylor",
                 Page = 402
-            });          
+            }) ;          
                         
         }
     }

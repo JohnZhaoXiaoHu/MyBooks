@@ -25,8 +25,8 @@ namespace WebApiBooks.Controllers
             IEnumerable<Book> books = _bookRepository.GetAll();
             return Ok(books);
         }
-        [HttpGet("{id}",Name="Get")]
-        public IActionResult Get(int id)
+        [HttpGet("{id}")]
+        public IActionResult Get(Guid id)
         {
             Book book = _bookRepository.Get(id);
             
@@ -45,13 +45,10 @@ namespace WebApiBooks.Controllers
             }
 
             _bookRepository.Add(book);
-            return CreatedAtRoute(
-                "Get",
-                new { Id = book.BookId },
-                book);
+            return Ok();
         }
         [HttpPut("{Id}")]
-        public IActionResult Put(int id, [FromBody] Book book)
+        public IActionResult Put(Guid id, [FromBody] Book book)
         {
             if(book==null)
             {
@@ -64,10 +61,10 @@ namespace WebApiBooks.Controllers
             }
 
             _bookRepository.Update(bookToUpdate, book);
-            return NoContent();
+            return Ok();
         }
 
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             Book book = _bookRepository.Get(id);
             if(book==null)
@@ -75,7 +72,7 @@ namespace WebApiBooks.Controllers
                 return NotFound("The Book recordn't be found.");
             }
             _bookRepository.Delete(book);
-            return NoContent();
+            return Ok();
         }
     }
 }

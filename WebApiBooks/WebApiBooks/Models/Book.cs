@@ -12,13 +12,13 @@ namespace WebApiBooks.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int BookId { get; set; }
+        public Guid Id { get; set; }
 
-        public string nameBook { get; set; }
+        public string NameBook { get; set; }
 
         public string Author { get; set; }
 
-        public int Page { get; set; }
-    }
+        public int Page { get; set; } 
+    } 
 }
  

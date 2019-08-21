@@ -9,9 +9,9 @@ namespace WebApiBooks.RepopsitoryContracts
    public interface IBookRepository<Book>
     {
         IEnumerable<Book> GetAll();
-        Book Get(int id);
-        void Add(Book entity);
-        void Update(Book dbEntity, Book entity);
-        void Delete(Book entity);
+        Book Get(Guid id);
+        void Add(Book updateBook);
+        void Update(Book dbEntity, Book updateBook);
+        void Delete(Book updateBook);
     }
 }
