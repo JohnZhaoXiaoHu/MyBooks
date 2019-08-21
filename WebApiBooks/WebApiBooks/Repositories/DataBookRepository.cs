@@ -28,8 +28,25 @@ namespace WebApiBooks.Repositories
 
         public Book Get(Guid id)
         {
-            return _repositoryContext.Books.FirstOrDefault();
+            return _repositoryContext.Books.FirstOrDefault(e=>e.Id==id);
         }
+
+
+        public IEnumerable<Book> GetBooks(Book book)
+        {
+            
+            var books = _repositoryContext.Books.AsQueryable();
+            if (!string.IsNullOrEmpty(book.NameBook))
+            {
+                books = books.Where(e => string.Equals(e.NameBook, book.NameBook));
+            }
+            if(!string.IsNullOrEmpty(book.Author))
+            {
+                books = books.Where(e => string.Equals(e.Author, book.Author));
+            }
+            return books.ToList();
+        }
+
 
         public IEnumerable<Book> GetAll()
         {
