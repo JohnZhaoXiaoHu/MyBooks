@@ -13,6 +13,6 @@ namespace WebApiBooks.RepopsitoryContracts
         void Add(Book updateBook);
         void Update(Book dbEntity, Book updateBook);
         void Delete(Book updateBook);
-        IEnumerable<Book> GetBooks(Book book);
+        IEnumerable<Book> GetBooks(Book getbook);
     }
 }

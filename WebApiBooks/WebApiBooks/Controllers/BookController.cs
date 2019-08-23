@@ -37,7 +37,7 @@ namespace WebApiBooks.Controllers
             return Ok(book);            
         }
         [HttpGet("filter")]
-        public IActionResult GetBooks(string author=null, string name=null)
+        public IActionResult GetBooks(string author, string name)
         {
             IEnumerable<Book> books = _bookRepository.GetBooks(new Book() { Author=author,NameBook=name});
             return Ok(books);
