@@ -15,15 +15,15 @@ namespace WebApiBooks.Repositories
             _repositoryContext = context;
         }
 
-        public void Add(Book updatebook)
+        public void Add(Book updateBook)
         {
-            _repositoryContext.Books.Add(updatebook);
+            _repositoryContext.Books.Add(updateBook);
            
         } 
 
-        public void Delete(Book updatebook)
+        public void Delete(Book updateBook)
         {
-            _repositoryContext.Books.Remove(updatebook);          
+            _repositoryContext.Books.Remove(updateBook);          
         }
 
         public Book Get(Guid id)
@@ -32,19 +32,19 @@ namespace WebApiBooks.Repositories
         }
 
 
-        public IEnumerable<Book> GetBooks(Book book)
+        public IEnumerable<Book> GetBooks(Book getBook)
         {
-            
-            var books = _repositoryContext.Books.AsQueryable();
-            if (!string.IsNullOrEmpty(book.NameBook))
+            var res = new List<Book>();
+            var tmp = _repositoryContext.Books.AsQueryable();
+            if (!string.IsNullOrEmpty(getBook.NameBook))
             {
-                books = books.Where(e => string.Equals(e.NameBook, book.NameBook));
+                tmp = tmp.Where(e => string.Equals(e.NameBook, getBook.NameBook));
             }
-            if(!string.IsNullOrEmpty(book.Author))
+            if(!string.IsNullOrEmpty(getBook.Author))
             {
-                books = books.Where(e => string.Equals(e.Author, book.Author));
+               tmp = tmp.Where(e => string.Equals(e.Author, getBook.Author));
             }
-            return books.ToList();
+            return res;
         }
 
 
@@ -53,13 +53,13 @@ namespace WebApiBooks.Repositories
             return _repositoryContext.Books.ToList();
         }
 
-        public void Update(Book book, Book updateBook)
+        public void Update(Book UpdateBook, Book updateBookDb)
         {          
-            book.Author = updateBook.Author;
-            book.NameBook = updateBook.NameBook;
-            book.Page =  updateBook.Page;
+            UpdateBook.Author = updateBookDb.Author;
+            UpdateBook.NameBook = updateBookDb.NameBook;
+            UpdateBook.Page =  updateBookDb.Page;
 
-            _repositoryContext.Books.Update(updateBook);
+            _repositoryContext.Books.Update(updateBookDb);
         }
     }
 }
