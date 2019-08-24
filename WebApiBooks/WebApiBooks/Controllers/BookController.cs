@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiBooks.Models;
@@ -9,8 +10,9 @@ using WebApiBooks.RepopsitoryContracts;
 
 namespace WebApiBooks.Controllers
 {
+
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]    
     public class BookController : ControllerBase
     {
         private readonly IBookRepository<Book> _bookRepository;
