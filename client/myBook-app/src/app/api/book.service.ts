@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BookService {
+  filter: string;
 
   constructor(private http: HttpClient) { }
 

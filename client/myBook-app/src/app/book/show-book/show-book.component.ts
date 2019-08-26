@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild} from '@angular/core';
 import {MatTableDataSource, MatSort} from '@angular/material';
 import { BookService } from 'src/app/api/book.service';
 
@@ -13,10 +13,17 @@ export class ShowBookComponent implements OnInit {
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = [ 'Id', 'NameBook', 'Author', 'Page'];
 
+@ViewChild(MatSort, null) sort: MatSort;
+
+
+  applyFilter(filterValue: string) {
+    this.listData.filter = filterValue.trim().toLowerCase();
+  }
+
 getBookList() {
 this.service.getBookList().subscribe(data => {
 this.listData = new MatTableDataSource(data);
-
+this.listData.sort = this.sort;
 });
 
 }
@@ -24,5 +31,6 @@ this.listData = new MatTableDataSource(data);
   ngOnInit() {
     this.getBookList();
   }
+
 
 }
