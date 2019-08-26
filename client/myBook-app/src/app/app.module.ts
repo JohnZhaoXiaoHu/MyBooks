@@ -13,11 +13,15 @@ import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { AddBookComponent } from './book/add-book/add-book.component';
+
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShowBookComponent
+    ShowBookComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
@@ -27,12 +31,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatTableModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
   ],
+  entryComponents: [AddBookComponent]
 })
 export class AppModule { }
