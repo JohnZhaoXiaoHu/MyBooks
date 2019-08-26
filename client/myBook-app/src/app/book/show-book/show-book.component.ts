@@ -50,4 +50,5 @@ onAdd() {
   dialogConfig.width = "90%";
   this.dialog.open(AddBookComponent, dialogConfig);
 }
+
 }
