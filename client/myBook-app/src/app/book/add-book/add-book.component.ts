@@ -3,6 +3,7 @@ import {MatDialogRef} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BookService} from 'src/app/api/book.service';
 import { NgForm } from '@angular/forms';
+import { Book } from 'src/app/models/book-model';
 
 @Component({
   selector: 'app-add-book',
@@ -18,21 +19,15 @@ export class AddBookComponent implements OnInit {
   }
 
 
-  resetForm(form?: NgForm) {
-    if (form != null) {
-    form.resetForm();
+  resetForm() {
+
+
+    this.service.formData = new Book();
     }
 
-    this.service.formData = {
-      Id: 0,
-    NameBook: '',
-      Author: '',
-      Page: 0
-    };
-    }
-    onSabmit(form: NgForm) {
-      this.service.addBook(form.value).subscribe(res => {
-        this.resetForm(form);
+   saveBook() {
+      this.service.addBook(this.service.formData).subscribe(res => {
+        this.resetForm();
         alert(res);
       });
     }

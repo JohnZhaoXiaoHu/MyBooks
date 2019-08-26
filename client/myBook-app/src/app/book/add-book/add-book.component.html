@@ -12,18 +12,18 @@
                  <div class="input-group-prepend">
                        <span class="input-group-text">Book name</span>                       
                  </div> 
-                 <input required minlength="1" type="text"
+                 <input required  type="text"
                  class="form-control"
-                 name="BookName"
-                 #BookName="ngModel"
-                 [(ngModel)]="service.formData.BookName">
+                 name="NameBook"
+                 #NameBook="ngModel"
+                 [(ngModel)]="service.formData.NameBook">
             </div>
 
                   <div class="mt-4 input-group">
                         <div class="input-group-prepend">
                               <span class="input-group-text">Author</span>                       
                         </div> 
-                        <input required minlength="2" type="text"
+                        <input required  type="text"
                         class="form-control"
                         name="Author"
                         #Author="ngModel"
@@ -34,7 +34,7 @@
                               <div class="input-group-prepend">
                                     <span class="input-group-text">Page</span>                       
                               </div> 
-                              <input required minlength="3" type="text"
+                              <input required  type="text"
                               class="form-control"
                               name="Page"
                               #Page="ngModel"
@@ -42,9 +42,10 @@
                          </div>  
 
             <div class="text-left text-danger"
-            *ngIf="BookName.invalid && BookName.touched">
+            *ngIf="NameBook.invalid && NameBook.touched">
             Please enter Book name.
       </div>
-      <button class="mt-4" mat-raised-button color="primary" type="submit"[disabled]="form.invalid">Add Book</button>
+      <button class="mt-2" mat-raised-button (click)="saveBook()" color="primary">Add book</button>    
+      <!-- <button class="mt-4" mat-raised-button color="primary" (click)="saveBook()" type="submit"[disabled]="form.invalid">Add Book</button> -->
       </form>
 </div>

@@ -10,8 +10,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookService {
 
-  formData: Book;
-  constructor(private http: HttpClient) { }
+ public formData: Book;
+  constructor(private http: HttpClient) {
+    this.formData = new Book();
+    this.formData.Id = '';
+    this.formData.Author = '';
+    this.formData.NameBook = '';
+    this.formData.Page = 0;
+   }
 
   readonly ApiUrl = "https://localhost:44393/api";
 
