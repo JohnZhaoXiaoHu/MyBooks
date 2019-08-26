@@ -1,1 +1,39 @@
-<p>show-book works!</p>
+<mat-card>My faworite books collection:</mat-card>
+<mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+
+<div style="overflow:auto;">
+      <div class="mat-elevation-z8">
+            <mat-table [dataSource]="listData" matSort>
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
+
+              
+
+               <ng-container matColumnDef="Id" >
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+                    <mat-header-cell *matCellDef="let element">{{element.id}}</mat-header-cell>
+              </ng-container>
+
+
+              <ng-container matColumnDef="NameBook" >
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>NameBook</mat-header-cell>
+                  <mat-header-cell *matCellDef="let element">{{element.nameBook}}</mat-header-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="Author" >
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
+                        <mat-header-cell *matCellDef="let element">{{element.author}}</mat-header-cell>
+                  </ng-container>
+
+
+                  <ng-container matColumnDef="Page" >
+                              <mat-header-cell *matHeaderCellDef mat-sort-header>Pages</mat-header-cell>
+                              <mat-header-cell *matCellDef="let element">{{element.page}}</mat-header-cell>
+                        </ng-container> 
+            </mat-table>
+      </div>
+</div>
+     <button class="mt-2" mat-raised-button (click)="onAdd()" color="primary">Add book</button>    
+
