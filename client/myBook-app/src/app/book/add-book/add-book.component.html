@@ -1,1 +1,50 @@
-<p>add-book works!</p>
+<div class="d-flex justify-content-between">
+      <h4>Add new Book</h4>
+
+      <button mat-button (click)="onClose()">
+            <mat-icon>close</mat-icon>
+      </button>
+</div>
+<div style="overflow:auto; height: 450px;">
+      <form #form="ngForm" (submit)="onSubmit(forn)" autocomplete="off">
+
+            <div class="mt-4 input-group">
+                 <div class="input-group-prepend">
+                       <span class="input-group-text">Book name</span>                       
+                 </div> 
+                 <input required minlength="1" type="text"
+                 class="form-control"
+                 name="BookName"
+                 #BookName="ngModel"
+                 [(ngModel)]="service.formData.BookName">
+            </div>
+
+                  <div class="mt-4 input-group">
+                        <div class="input-group-prepend">
+                              <span class="input-group-text">Author</span>                       
+                        </div> 
+                        <input required minlength="2" type="text"
+                        class="form-control"
+                        name="Author"
+                        #Author="ngModel"
+                        [(ngModel)]="service.formData.Author">
+                   </div>
+
+                   <div class="mt-4 input-group">
+                              <div class="input-group-prepend">
+                                    <span class="input-group-text">Page</span>                       
+                              </div> 
+                              <input required minlength="3" type="text"
+                              class="form-control"
+                              name="Page"
+                              #Page="ngModel"
+                              [(ngModel)]="service.formData.Page">
+                         </div>  
+
+            <div class="text-left text-danger"
+            *ngIf="BookName.invalid && BookName.touched">
+            Please enter Book name.
+      </div>
+      <button class="mt-4" mat-raised-button color="primary" type="submit"[disabled]="form.invalid">Add Book</button>
+      </form>
+</div>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {BookService} from 'src/app/api/book.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -14,8 +15,15 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { AddBookComponent } from './book/add-book/add-book.component';
-
 import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+
+
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +40,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTableModule,
     MatMenuModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+   // MatFormFieldModule,
+   FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

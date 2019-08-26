@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddBookComponent } from '../add-book/add-book.component';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-show-book',
@@ -18,7 +19,7 @@ export class ShowBookComponent implements OnInit {
     this.service.getBookList().subscribe((m: any) => {
       console.log(m);
       this.getBookList();
-    })
+    });
    }
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = [ 'Id', 'NameBook', 'Author', 'Page'];

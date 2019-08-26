@@ -9,15 +9,25 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BookService {
-  filter: string;
 
+  formData: Book;
   constructor(private http: HttpClient) { }
 
   readonly ApiUrl = "https://localhost:44393/api";
+
+private listners = new Subject<any>();
+listen(): Observable<any> {
+  return this.listners.asObservable();
+}
+filter(filterBy: string) {
+  this.listners.next(filterBy);
+}
 
 getBookList(): Observable<Book[]> {
   return this.http.get<Book[]>(this.ApiUrl + '/book');
 }
 
-
+addBook(update: Book) {
+  return this.http.post(this.ApiUrl + '/book', update);
+}
 }
