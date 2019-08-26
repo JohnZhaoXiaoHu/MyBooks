@@ -12,7 +12,7 @@ import { ShowBookComponent } from './book/show-book/show-book.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatCardModule,
     MatTableModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
