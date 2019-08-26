@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource, MatSort} from '@angular/material';
+import { BookService } from 'src/app/api/book.service';
 
 @Component({
   selector: 'app-show-book',
@@ -8,12 +9,20 @@ import {MatTableDataSource, MatSort} from '@angular/material';
 })
 export class ShowBookComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: BookService) { }
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = [ 'Id', 'NameBook', 'Author', 'Page'];
 
+getBookList() {
+this.service.getBookList().subscribe(data => {
+this.listData = new MatTableDataSource(data);
+
+});
+
+}
 
   ngOnInit() {
+    this.getBookList();
   }
 
 }
