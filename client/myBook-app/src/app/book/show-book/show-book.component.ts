@@ -9,6 +9,9 @@ import {MatTableDataSource, MatSort} from '@angular/material';
 export class ShowBookComponent implements OnInit {
 
   constructor() { }
+  listData: MatTableDataSource<any>;
+  displayedColumns: string[] = [ 'Id', 'NameBook', 'Author', 'Page'];
+
 
   ngOnInit() {
   }
