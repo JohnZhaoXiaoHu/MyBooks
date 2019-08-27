@@ -6,7 +6,7 @@
       </button>
 </div>
 <div style="overflow:auto; height: 450px;">
-      <form #form="ngForm" (submit)="onSubmit(forn)" autocomplete="off">
+      <form #form="ngForm" (submit)="saveBook(form)" >
 
             <div class="mt-4 input-group">
                  <div class="input-group-prepend">
@@ -41,11 +41,11 @@
                               [(ngModel)]="service.formData.Page">
                          </div>  
 
-            <div class="text-left text-danger"
-            *ngIf="NameBook.invalid && NameBook.touched">
+            <div class="text-left text-danger">
             Please enter Book name.
       </div>
-      <button class="mt-2" mat-raised-button (click)="saveBook()" color="primary">Add book</button>    
-      <!-- <button class="mt-4" mat-raised-button color="primary" (click)="saveBook()" type="submit"[disabled]="form.invalid">Add Book</button> -->
+      
+      <button class="mt-2" mat-raised-button (click)="saveBook()" color="primary"  >Add book</button>   
+   
       </form>
 </div>

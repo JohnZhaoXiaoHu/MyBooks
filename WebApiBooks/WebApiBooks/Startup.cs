@@ -48,7 +48,7 @@ namespace WebApiBooks
                 app.UseHsts();
             }
             app.UseCors(
-                options => options.WithOrigins("http://localhost:4200").AllowAnyMethod()
+                options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
                 );
             app.UseHttpsRedirection();
             app.UseMvc();

@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class BookService {
 
  public formData: Book;
+
   constructor(private http: HttpClient) {
     this.formData = new Book();
     this.formData.Id = '';
@@ -33,7 +34,7 @@ getBookList(): Observable<Book[]> {
   return this.http.get<Book[]>(this.ApiUrl + '/book');
 }
 
-addBook(update: Book) {
-  return this.http.post(this.ApiUrl + '/book', update);
+addBook(book: Book) {
+  return this.http.post(this.ApiUrl + '/book', book);
 }
 }

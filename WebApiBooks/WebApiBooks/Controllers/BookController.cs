@@ -44,7 +44,7 @@ namespace WebApiBooks.Controllers
             IEnumerable<Book> books = _bookRepository.GetBooks(new Book() { Author=author,NameBook=name});
             return Ok(books);
         }
-        [HttpPost]
+        [HttpPost]        
         public IActionResult Post([FromBody] Book book)
         {
             if(book==null)
@@ -53,7 +53,8 @@ namespace WebApiBooks.Controllers
             }
 
             _bookRepository.Add(book);
-            return Ok();
+
+            return Ok(book) ;
         }
         [HttpPut]
         public IActionResult Put(  [FromBody] Book book)

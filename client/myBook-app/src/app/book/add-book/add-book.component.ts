@@ -13,7 +13,9 @@ import { Book } from 'src/app/models/book-model';
 export class AddBookComponent implements OnInit {
 
   constructor(public dialogbox: MatDialogRef<AddBookComponent>,
-              private service: BookService ) { }
+              private service: BookService ) {}
+
+
 
   ngOnInit() {
   }
@@ -21,21 +23,25 @@ export class AddBookComponent implements OnInit {
 
   resetForm() {
 
-
     this.service.formData = new Book();
+
     }
 
-   saveBook() {
-      this.service.addBook(this.service.formData).subscribe(res => {
-        this.resetForm();
-        alert(res);
-      });
-    }
+    saveBook() {
+       this.service.addBook(this.service.formData).subscribe(res => {
+         this.resetForm();
+         alert(res);
+       });
+     }
+
+
+
 
     onClose() {
       this.dialogbox.close();
       this.service.filter('Register click');
     }
+
 
 
 }
